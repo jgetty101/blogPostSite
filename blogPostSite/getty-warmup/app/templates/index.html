@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>Welcome to Smile Portal!</h1>
+<h2>Number of smiles: {{number_of_smiles}} </h2>
+
+<!--     Include the form for creating a new post here.. -->
+
+<form method="POST">
+    {{sort.hidden_tag()}}
+    <div>
+        {{sort.sort_by.label}} <span class="formselect">{{sort.sort_by}}</span> {{sort.submit}}
+    </div>
+</form>
+
+
+<!--  Format posts -->
+<div class="postList">
+    {% for post in posts %}
+    <div class="post-box">{% include '_post.html' %}</div>
+    {% endfor %}
+</div>
+
+{% endblock %}

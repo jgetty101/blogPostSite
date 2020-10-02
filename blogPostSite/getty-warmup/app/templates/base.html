@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    {% if title %}
+    <title>{{ title }} - Smile </title>
+    {% else %}
+    <title> Welcome to Smile Portal! </title>
+    {% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+    <div class="nav-container">
+        <table>
+            <tr>
+                <td><a href="{{ url_for('index') }}" class="button">Smiles</a></td>
+                <!-- add the URL for the "Post Smile". -->
+                <td><a href="{{url_for('postsmile')}}" class="button"> Post Smile </a></td>
+                <!-- TODO: add the "Login" or "Logous" link. If the user is logged in, Login link should be displayed, otherwise Logout link should be displayed. -->
+                <td><a href="" class="button"> Login </a></td>
+                <td><a href="" class="button"> Logout </a></td>
+                <td> Current user is: <span class="useritem"> _______ <!-- TODO: include the username of the logged-in user. -->  </span></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <div class="flash-container"> {{ message }}</div>
+        {% endfor %} {% endif %} {% endwith %} {% block content %} {% endblock %}
+    </div>
+
+</body>
+
+</html>
